@@ -10,7 +10,6 @@ public class Main {
     public static void main(String[] args) {
 
         AppConfig appConfig = new AppConfig();
-        System.out.println(args.length);
         try {
             BufferedReader bufferedReader= new BufferedReader(new FileReader(args[0]));
             String input = bufferedReader.readLine();
