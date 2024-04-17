@@ -1,27 +1,25 @@
 package com.example.geektrust.services.implementations;
 
 
-import com.example.geektrust.entities.PaymentType;
+import com.example.geektrust.entities.MetroCard;
 import com.example.geektrust.entities.Station;
 import com.example.geektrust.enums.PassengerType;
 import com.example.geektrust.factory.DiscountFactory;
 import com.example.geektrust.factory.PassengerTypeFactory;
 import com.example.geektrust.services.abstractClasses.abstractFareCheck;
-import com.example.geektrust.services.interfaces.IPaymentType;
+import com.example.geektrust.services.interfaces.IMetroCard;
 import com.example.geektrust.services.interfaces.IRailwaySystem;
 import com.example.geektrust.services.interfaces.IStation;
 import com.example.geektrust.strategy.interfaces.DiscountStrategy;
 
-import java.util.*;
-
 public class RailwaySystemImpl implements IRailwaySystem {
-     private final IPaymentType paymentTypeService;
+     private final IMetroCard paymentTypeService;
      private final IStation stationService;
      private final abstractFareCheck fareCheck;
-     private PaymentType paymentType;
+     private MetroCard paymentType;
      private Station station;
 
-     public RailwaySystemImpl(final  IPaymentType paymentTypeService, final IStation stationService,
+     public RailwaySystemImpl(final IMetroCard paymentTypeService, final IStation stationService,
                               abstractFareCheck fareCheck) {
          this.paymentTypeService = paymentTypeService;
          this.stationService = stationService;
@@ -48,7 +46,7 @@ public class RailwaySystemImpl implements IRailwaySystem {
 
         stationService.updateAll(station,passengerType,discount,tripFee + serviceTax);
     }
-    private Integer checkRechargeCharge(Integer tripFee, PaymentType paymentType) {
+    private Integer checkRechargeCharge(Integer tripFee, MetroCard paymentType) {
          Integer balance = paymentType.getBalance();
          Integer recharge = 0;
          if(balance < tripFee) {

@@ -1,13 +1,13 @@
 package com.example.geektrust.commands;
 
 
-import com.example.geektrust.services.interfaces.IPaymentType;
+import com.example.geektrust.services.interfaces.IMetroCard;
 
 import java.util.List;
 
 public class Balance implements Command{
-    private final IPaymentType metroCard;
-    public Balance(final IPaymentType metroCard) {
+    private final IMetroCard metroCard;
+    public Balance(final IMetroCard metroCard) {
         this.metroCard = metroCard;
     }
     @Override
