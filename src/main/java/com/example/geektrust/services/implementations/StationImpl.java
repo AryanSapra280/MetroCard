@@ -16,8 +16,8 @@ public class StationImpl implements IStation {
         this.stationRepository = stationRepository;
     }
     @Override
-    public void saveStation(Station station) {
-        stationRepository.save(station);
+    public Station saveStation(Station station) {
+        return stationRepository.save(station);
     }
 
     @Override
@@ -30,10 +30,11 @@ public class StationImpl implements IStation {
     }
 
     @Override
-    public void updateAll(Station station, PassengerType passengerType, Integer discount, Integer totalAmount) {
+    public Station updateAll(Station station, PassengerType passengerType, Integer discount, Integer totalAmount) {
         station.addPassenger(passengerType);
         station.setDiscount(discount);
         station.setAmount(totalAmount);
+        return station;
     }
     @Override
     public void printSummary() {
