@@ -16,21 +16,24 @@ public class MetroCardImpl implements IMetroCard {
         this.metroCardRepository = metroCardRepository;
     }
     @Override
-    public void create(String metroCardId, Integer balance) {
+    public MetroCard create(String metroCardId, Integer balance) {
         Optional<MetroCard> paymentTypeOptional = metroCardRepository.findById(metroCardId);
         if(paymentTypeOptional.isPresent()) {
             MetroCard metroCard = paymentTypeOptional.get();
             metroCard.setBalance(balance);
             metroCardRepository.save(metroCard);
+            return metroCard;
         }
 
         MetroCard metroCard = new MetroCard(metroCardId,balance);
         metroCardRepository.save(metroCard);
+        return metroCard;
     }
 
     @Override
-    public void save(MetroCard paymentType) {
+    public MetroCard save(MetroCard paymentType) {
         metroCardRepository.save(paymentType);
+        return paymentType;
     }
 
     @Override
